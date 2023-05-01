@@ -37,6 +37,7 @@ test("Repository has link to GitHub", async () => {
 test("Repository has internal link to the repositories/full_name", async () => {
   const { repository } = await RenderComponent();
 
+  // eslint-disable-next-line testing-library/no-debugging-utils
   screen.logTestingPlaygroundURL();
   const fullNameLink = screen.getByRole("link", { name: /link/i});
 
