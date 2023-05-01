@@ -14,7 +14,7 @@ test("Page shows 'JavaScript' when repository includes a language property", () 
 
   // Find JSX element or manipulate the component
   // eslint-disable-next-line testing-library/no-debugging-utils
-  screen.logTestingPlaygroundURL()
+  //screen.logTestingPlaygroundURL()
   const languageTextElement = screen.getByText(/JavaScript/i);
 
   // Verify element is in the document
@@ -50,7 +50,7 @@ test("All expected repository prop values are displayed", () => {
   render(<RepositoriesSummary repository={repository} />);
 
   // eslint-disable-next-line testing-library/no-debugging-utils
-  screen.logTestingPlaygroundURL();
+  //screen.logTestingPlaygroundURL();
 
   for (let [key, val] of Object.entries(repository)) {
     console.log(`val is ${val}`)

@@ -33,3 +33,28 @@ test("Repository has link to GitHub", async () => {
   expect(linkElem).toHaveAttribute('href');
   expect(linkElem).toHaveAttribute('href', repository.html_url);
 })
+
+test("Repository has internal link to the repositories/full_name", async () => {
+  const { repository } = await RenderComponent();
+
+  screen.logTestingPlaygroundURL();
+  const fullNameLink = screen.getByRole("link", { name: /link/i});
+
+  expect(fullNameLink).toHaveAttribute("href", `/repositories/${repository.full_name}`);
+})
+
+test("Shows anguage icon (FileIcon) next to repo name", async () => {
+  // Render component under test
+  const { repository } = await RenderComponent();
+
+  // Use logTestingPlaygroundUrl() to identify what's being rendered and how to query for JSX elements of interest
+  // eslint-disable-next-line testing-library/no-debugging-utils
+  //screen.logTestingPlaygroundURL();
+
+  // Identify a particular element of interest or manipulate the component
+  const icon = await screen.findByRole("img", { name: "Javascript" });
+
+  // Verify the element of interest is in document as expected
+  expect(icon).toBeInTheDocument();
+  expect(icon).toHaveClass('js-icon');
+})
