@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-debugging-utils */
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { createServer } from '../../test/server';
@@ -34,10 +35,13 @@ describe("When user is not signed in", () => {
     // eslint-disable-next-line testing-library/no-debugging-utils
 
     screen.debug();
-    await pause();
+    //await pause();  // Now that we have the findBy__() call in place (below), be sure to comment out the pause() invocation otherwise the act() warning will remain in the terminal
     screen.debug();
 
+    // eslint-disable-next-line testing-library/no-debugging-utils
     //screen.logTestingPlaygroundURL()
+
+    const links = await screen.findAllByRole('link', { name: /sign in/i });
   })
 
   test("sign out is not visible", () => {

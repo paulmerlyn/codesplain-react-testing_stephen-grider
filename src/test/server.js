@@ -17,14 +17,17 @@ export function createServer(handlerConfig) {
   const server = setupServer(...handlers);
 
   beforeAll(() => {
+    console.log("MSW server is listening");
     server.listen();
   })
 
   beforeEach(() => {
+    console.log("MSW server handlers are reset");
     server.resetHandlers();
   })
 
   afterAll(() => {
+    console.log("MSW server is closed");
     server.close();
   })
 }
