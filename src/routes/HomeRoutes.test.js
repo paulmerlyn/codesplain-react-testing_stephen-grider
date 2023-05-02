@@ -5,6 +5,8 @@ import { rest } from 'msw';
 import { MemoryRouter } from 'react-router-dom';
 
 // Set up an MSW handler to intercept a particular request (e.g. GET /api/repositories) 
+// But in the future, as an alternative to integrating an MSW server into each test file, consider the pattern of import'ing a centralized MSW
+// (from ../test/server.js) as used in auth/AuthButtons.test.js
 const handlers = [
   rest.get('api/repositories', (req, res, ctx) => {
     const query = req.url.searchParams.get('q');
