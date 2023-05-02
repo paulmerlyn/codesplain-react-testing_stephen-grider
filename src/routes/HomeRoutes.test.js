@@ -77,7 +77,7 @@ test("HomeRoute renders two links for each language", async () => {
   }
 })
 
-// We could call this pause() function as an alternative to using the async findBy__ as an alternative strategy to ensure the MSW has finished before we do our assertions
+// We could call this pause() function (via: await pause()) as an alternative to using the async findBy__ as an alternative strategy to ensure the MSW has finished before we do our assertions
 const pause = () => new Promise((resolve, reject) => {
   setTimeout(() => resolve(), 1000);
 })
